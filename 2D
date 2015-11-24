@@ -1,0 +1,1126 @@
+// VARIABLES
+float loop = 0.5; 
+float lo = 0.5;
+float op = 0.5;
+float cambio = 0;
+PImage colombia;
+PImage tablafondo;
+PImage paleta;
+PImage titulo;
+PImage colombia0;
+PImage colombia50;
+PImage colombia100;
+PImage colombia500;
+PImage colombia600;
+PImage colombia1000;
+PImage colombia8000;
+PImage tabla1;
+
+// DEPARTAMENTOS .png
+PImage sandres;
+PImage atlantico;
+PImage magdalena;
+PImage bolivar;
+PImage guajira;
+PImage cesar;
+PImage sucre;
+PImage cordoba;
+PImage nortesan;
+PImage santander;
+PImage antioquia; 
+PImage arauca;
+PImage vichada;
+PImage guaviare;
+PImage guainia;
+PImage meta;
+PImage casanare;
+PImage vaupes;
+PImage amazonas;
+PImage cundinamarca;
+PImage bogota;
+PImage narino;
+PImage choco;
+PImage caldas;
+PImage boyaca;
+PImage risaralda;
+PImage quindio;
+PImage tolima;
+PImage valle;
+PImage cauca;
+PImage huila;
+PImage putumayo;
+PImage caqueta;
+//
+// TABLA
+Table tabla;
+
+
+// TIPOGRAFÍAS
+PFont titulodpto;
+PFont rangos;
+PFont rangos2;
+PFont indicaciones;
+PFont head;
+PFont rangos3;
+
+void setup() 
+{
+  size(1040, 790, P3D);
+  colombia = loadImage("COLOMBIA-05.png");
+  colombia0 = loadImage("COLOMBIAcero-05.png");
+  colombia50 = loadImage("COLOMBIA50-05.png");
+  colombia100 = loadImage("COLOMBIA100-05.png");
+  colombia500 = loadImage("COLOMBIA500-05.png");
+  colombia600 = loadImage("COLOMBIA600-05.png");
+  colombia1000 = loadImage("COLOMBIA1000-05.png");
+  colombia8000 = loadImage("COLOMBIA8000-05.png");
+  tabla1 = loadImage("Tabla1-07.png");
+  sandres = loadImage("sanandres-08.png");
+  atlantico = loadImage("atlantico-08.png");
+  magdalena = loadImage("magdalena-08.png");
+  bolivar= loadImage("bolivar-08.png");
+  guajira= loadImage("guajira-08.png");
+  cesar = loadImage("cesar-08.png");
+  sucre = loadImage("sucre-08.png");
+  cordoba = loadImage("cordoba-08.png");
+  nortesan = loadImage("nortesan-08.png");
+  santander = loadImage("santander-08.png");
+  antioquia = loadImage("antioquia-08.png");
+  arauca = loadImage("arauca-08.png");
+  vichada= loadImage("vichada-08.png");
+  guaviare = loadImage ("guaviare-08.png");
+  guainia = loadImage ("guainia-08.png");
+  meta = loadImage("meta-08.png");
+  casanare = loadImage("casanare-08.png");
+  vaupes = loadImage("vaupes-08.png");
+  amazonas = loadImage("amazonas-08.png");
+  cundinamarca = loadImage("cundinamarca-08.png");
+  bogota = loadImage("bogota-08.png");
+  narino = loadImage("narino-08.png");
+  choco = loadImage("choco-08.png");
+  caldas = loadImage("caldas-08.png");
+  boyaca = loadImage("boyaca-08.png");
+  risaralda = loadImage("risaralda-08.png");
+  quindio = loadImage("quindio-08.png");
+  tolima = loadImage("tolima-08.png");
+  valle = loadImage ("valle-08.png");
+  cauca = loadImage ("cauca-08.png");
+  huila = loadImage ("huila-08.png");
+  putumayo = loadImage("putumayo-08.png");
+  caqueta = loadImage ("caqueta-08.png");
+
+
+  tabla = loadTable("publicar.csv", "header");
+
+
+  titulodpto = loadFont("Calibri-BoldItalic-20.vlw");
+  rangos = loadFont("Calibri-Italic-15.vlw");
+  rangos2 = loadFont("Calibri-BoldItalic-17.vlw");
+  indicaciones = loadFont("Calibri-Italic-10.vlw");
+  head = loadFont("Calibri-BoldItalic-20.vlw");
+  rangos3 = loadFont("Calibri-BoldItalic-13.vlw");
+}
+
+
+
+
+
+
+void draw() {
+  background(222, 223, 227);
+
+  loop = loop + (lo*op/4);
+
+  if (loop > 4 || loop < 0) {
+    loop = 0;
+    op = op * 1;
+  }
+
+  fill(130, 130, 130);
+  rect(570, 80, 370, 2);
+  textFont(rangos2);
+  text("Distribución de la producción bibliográfica de autores vinculadas a instituciones colombianas por entidad territorial, 2013", 85, 50);
+  textFont(rangos3);
+  fill(120, 120, 120, 130);
+  text("Instrucciones: Arrastre el mouse en la franja inferior / Dé click en los círculos del mapa", 478, 69);
+  textFont(indicaciones);
+  fill(120, 120, 120);
+  text("Rangos de 0 a 10000 producciones", 797, 729); 
+  //fill(60, 60, 60);
+  //rect(0, 20, 1040, 40);
+  fill(255);
+  //textFont(head);
+  //text("Producción bibliográfica por entidad territorial", 245, 46);
+
+  fill(120, 120, 120);
+  rect(0, 0, 20, 790);
+  rect(0, 775, 1040, 15);
+  rect(1020, 0, 20, 790);
+  rect(0, 0, 1040, 15);
+
+
+
+  //MAPA DE FONDO
+  colombia.resize(450, 597);
+  image(colombia, 80, 100);
+
+
+  image(tabla1, 570, 100);
+  tabla1.resize(370, 579);
+
+
+
+  // barras inferiores con rangos
+
+  noStroke();
+
+  // rango 0
+  fill(244, 239, 225);
+  rect(82, 720, 102, 12);
+
+  // rango 0 -50
+  fill(245, 230, 206);
+  rect(183, 720, 102, 12);
+
+  // rango 50-100
+  fill(214, 218, 195);
+  rect(285, 720, 102, 12);
+
+  //rango 100-500
+  fill(174, 192, 159);
+  rect(385, 720, 102, 12);
+
+  //rango 500-1000
+  fill(20, 134, 122);
+  rect(485, 720, 102, 12);
+
+  //rango 1000-5000
+  fill(0, 79, 79);
+  rect(585, 720, 102, 12);
+
+  //rango 5000-10000
+  fill(0, 49, 49);
+  rect(685, 720, 102, 12);
+
+
+ 
+
+  // CIRCULOS //
+
+  // la función del final, valida la condicional que se encuentra en este punto
+  // con el fin de generar botines sobre todas las elipses.
+
+  //SAN ANDRES Y PROVIDENCIA
+  fill(20, 20, 20, 100);
+  noStroke(); 
+  ellipse(95, 130, loop, loop);
+  if (overCircle(95, 130, 4) == true && mousePressed) {
+    textFont(titulodpto);
+    fill(0);
+    text("SAN ANDRÉS Y", 610, 179);
+    text("PROVIDENCIA", 610, 197);
+    sandres.resize(115, 129);
+    image (sandres, 800, 130);
+    // + 22
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(24, 0), 870, 310);
+    text(tabla.getString(24, 1), 870, 395);
+    text(tabla.getString(24, 2), 870, 480);
+    text(tabla.getString(24, 3), 870, 565);
+    text(tabla.getString(24, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+
+
+  }
+
+  //CHOCÓ  
+  fill(0, 0, 0, 100);
+  noStroke(); 
+  ellipse(165, 327, loop, loop);
+  if (overCircle(165, 327, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("CHOCÓ", 660, 190);
+    choco.resize(125, 139);
+    image (choco, 800, 110);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(23, 0), 870, 310);
+    text(tabla.getString(23, 1), 870, 395);
+    text(tabla.getString(23, 2), 870, 480);
+    text(tabla.getString(23, 3), 870, 565);
+    text(tabla.getString(23, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+
+    //fill(245, 230, 206);
+    //troke(100,100,100,130);
+    //ights();
+    //ranslate(815, 560, 200);
+    //otateY(9.24);
+    //otateX(30.2);
+    //otateZ(9.9);
+    //ox(5,10,0.230003382963823);
+  }
+
+  //CALDAS
+  fill(255, 255, 255);
+  noStroke();
+  ellipse(221, 367, loop, loop);
+  if (overCircle(221, 367, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("CALDAS", 660, 190);
+    caldas.resize(105, 119);
+    image (caldas, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(4, 0), 865, 310);
+    text(tabla.getString(4, 1), 865, 395);
+    text(tabla.getString(4, 2), 865, 480);
+    text(tabla.getString(4, 3), 865, 565);
+    text(tabla.getString(4, 4), 862, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+
+    //fill(245, 230, 206);
+    //troke(100,100,100,130);
+    //ights();
+    //ranslate(800, 440, 200);
+    //otateY(9.24);
+    //otateX(30.2);
+    //otateZ(9.9);
+    //ox(5,10,300);
+  }
+
+
+  //ATLANTICO
+  fill(20, 20, 20, 100);
+  noStroke(); 
+  ellipse(235, 180, loop, loop);
+  if (overCircle(235, 180, 4) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("ATLÁNTICO", 645, 190);
+    atlantico.resize(115, 129);
+    image (atlantico, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(5, 0), 865, 310);
+    text(tabla.getString(5, 1), 870, 395);
+    text(tabla.getString(5, 2), 865, 480);
+    text(tabla.getString(5, 3), 865, 565);
+    text(tabla.getString(5, 4), 862, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+
+  //BOLIVAR
+  fill(20, 20, 20, 100);
+  noStroke(); 
+  ellipse(261, 264, loop, loop);
+  if (overCircle(261, 264, 4) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("BOLIVAR", 655, 190);
+    bolivar.resize(115, 129);
+    image (bolivar, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    fill(100, 100, 100);
+    text(tabla.getString(6, 0), 865, 310);
+    text(tabla.getString(6, 1), 870, 395);
+    text(tabla.getString(6, 2), 865, 480);
+    text(tabla.getString(6, 3), 865, 565);
+    text(tabla.getString(6, 4), 862, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+
+  ////MAGDALENA
+  fill(20, 20, 20, 100);
+  noStroke(); 
+  ellipse(262, 179, loop, loop);
+  if (overCircle(262, 179, 4) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("MAGDALENA", 640, 190);
+    magdalena.resize(115, 129);
+    image (magdalena, 820, 120);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(9, 0), 870, 310);
+    text(tabla.getString(9, 1), 870, 395);
+    text(tabla.getString(9, 2), 870, 480);
+    text(tabla.getString(9, 3), 865, 565);
+    text(tabla.getString(9, 4), 854, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+
+  ////LA GUAJIRA
+  fill(20, 20, 20, 100);
+  noStroke(); 
+  ellipse(314, 155, loop, loop);
+  if (overCircle(314, 155, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("LA GUAJIRA", 645, 190);
+    guajira.resize(110, 124);
+    image (guajira, 820, 110);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(26, 0), 870, 310);
+    text(tabla.getString(26, 1), 870, 395);
+    text(tabla.getString(26, 2), 870, 480);
+    text(tabla.getString(26, 3), 870, 565);
+    text(tabla.getString(26, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+  //CESAR
+  fill(20, 20, 20, 100);
+  noStroke(); 
+  ellipse(284, 216, loop, loop);
+  if (overCircle(284, 216, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("CESAR", 665, 190);
+    cesar.resize(115, 129);
+    image (cesar, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(21, 0), 870, 310);
+    text(tabla.getString(21, 1), 870, 395);
+    text(tabla.getString(21, 2), 870, 480);
+    text(tabla.getString(21, 3), 865, 565);
+    text(tabla.getString(21, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  ////SUCRE
+  fill(20, 20, 20, 100);
+  noStroke(); 
+  ellipse(233, 233, loop, loop);
+  if (overCircle(233, 233, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("SUCRE", 665, 190);
+    sucre.resize(115, 129);
+    image (sucre, 820, 110);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(16, 0), 870, 310);
+    text(tabla.getString(16, 1), 870, 395);
+    text(tabla.getString(16, 2), 870, 480);
+    text(tabla.getString(16, 3), 865, 565);
+    text(tabla.getString(16, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  ////CÓRDOBA
+  fill(20, 20, 20, 100);
+  noStroke(); 
+  ellipse(207, 260, loop, loop);
+  if (overCircle(207, 260, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("CÓRDOBA", 655, 190);
+    cordoba.resize(105, 119);
+    image (cordoba, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(12, 0), 870, 310);
+    text(tabla.getString(12, 1), 870, 395);
+    text(tabla.getString(12, 2), 870, 480);
+    text(tabla.getString(12, 3), 865, 565);
+    text(tabla.getString(12, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  ////NORTE DE SANTANDER
+  fill(20, 20, 20, 100);
+  noStroke(); 
+  ellipse(308, 275, loop, loop);
+  if (overCircle(308, 275, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("NORTE DE", 645, 190);
+    text("SANTANDER", 635, 207);
+    nortesan.resize(115, 129);
+    image (nortesan, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(15, 0), 870, 310);
+    text(tabla.getString(15, 1), 870, 395);
+    text(tabla.getString(15, 2), 870, 480);
+    text(tabla.getString(15, 3), 865, 565);
+    text(tabla.getString(15, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  ////SANTANDER
+  fill(255, 255, 255, 130);
+  noStroke();
+  ellipse(289, 317, loop, loop);
+  if (overCircle(289, 317, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("SANTANDER", 640, 190);
+    santander.resize(95, 109);
+    image (santander, 825, 125);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(3, 0), 865, 310);
+    text(tabla.getString(3, 1), 865, 395);
+    text(tabla.getString(3, 2), 865, 480);
+    text(tabla.getString(3, 3), 860, 565);
+    text(tabla.getString(3, 4), 862, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  ////ARAUCA
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(370, 318, loop, loop);
+  if (overCircle(370, 318, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("ARAUCA", 660, 190);
+    arauca.resize(120, 134);
+    image (arauca, 810, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(28, 0), 870, 310);
+    text(tabla.getString(28, 1), 870, 395);
+    text(tabla.getString(28, 2), 870, 480);
+    text(tabla.getString(28, 3), 865, 565);
+    text(tabla.getString(28, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //VICHADA
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(442, 379, loop, loop);
+  if (overCircle(442, 379, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("VICHADA", 655, 190);
+    vichada.resize(100, 114);
+    image (vichada, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(32, 0), 870, 310);
+    text(tabla.getString(32, 1), 870, 395);
+    text(tabla.getString(32, 2), 870, 480);
+    text(tabla.getString(32, 3), 865, 565);
+    text(tabla.getString(32, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //GUAINÍA
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(465, 451, loop, loop);
+  if (overCircle(465, 451, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("GUAINÍA", 655, 190);
+    guainia.resize(105, 119);
+    image (guainia, 810, 120);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(29, 0), 870, 310);
+    text(tabla.getString(29, 1), 870, 395);
+    text(tabla.getString(29, 2), 870, 480);
+    text(tabla.getString(29, 3), 865, 565);
+    text(tabla.getString(29, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //GUAVIARE
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(342, 485, loop, loop);
+  if (overCircle(342, 485, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("GUAVIARE", 645, 190);
+    guaviare.resize(105, 119);
+    image (guaviare, 815, 125);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(30, 0), 870, 310);
+    text(tabla.getString(30, 1), 870, 395);
+    text(tabla.getString(30, 2), 870, 480);
+    text(tabla.getString(30, 3), 865, 565);
+    text(tabla.getString(30, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+  //VAUPÉS
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(396, 518, loop, loop);
+  if (overCircle(396, 518, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("VAUPÉS", 660, 190);
+    vaupes.resize(100, 114);
+    image (vaupes, 820, 120);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(31, 0), 870, 310);
+    text(tabla.getString(31, 1), 870, 395);
+    text(tabla.getString(31, 2), 870, 480);
+    text(tabla.getString(31, 3), 865, 565);
+    text(tabla.getString(31, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+  //AMAZONAS
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(353, 609, loop, loop);
+  if (overCircle(353, 609, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("AMAZONAS", 645, 190);
+    amazonas.resize(105, 119);
+    image (amazonas, 820, 120);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(20, 0), 870, 310);
+    text(tabla.getString(20, 1), 870, 395);
+    text(tabla.getString(20, 2), 870, 480);
+    text(tabla.getString(20, 3), 865, 565);
+    text(tabla.getString(20, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+  ////ANTIOQUIA
+  fill(255, 255, 255, 130);
+  noStroke(); 
+  ellipse(220, 320, loop, loop);
+  if (overCircle(220, 320, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("ANTIOQUIA", 645, 190);
+    antioquia.resize(110, 124);
+    image (antioquia, 820, 120);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(1, 0), 865, 310);
+    text(tabla.getString(1, 1), 865, 395);
+    text(tabla.getString(1, 2), 860, 480);
+    text(tabla.getString(1, 3), 855, 565);
+    text(tabla.getString(1, 4), 862, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+
+  //CUNDINAMARCA
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(263, 368, loop, loop);
+  if (overCircle(263, 368, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("CUNDINAMARCA", 625, 190);
+    cundinamarca.resize(95, 109);
+    image (cundinamarca, 820, 120);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(8, 0), 865, 310);
+    text(tabla.getString(8, 1), 865, 395);
+    text(tabla.getString(8, 2), 865, 480);
+    text(tabla.getString(8, 3), 860, 565);
+    text(tabla.getString(8, 4), 862, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+  //BOGOTÁ 
+  fill(255, 255, 255);
+  noStroke();
+  ellipse(261, 412, loop, loop);
+  if (overCircle(261, 412, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("BOGOTÁ", 655, 190);
+    bogota.resize(105, 119);
+    image (bogota, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(0, 0), 860, 310);
+    text(tabla.getString(0, 1), 860, 395);
+    text(tabla.getString(0, 2), 860, 480);
+    text(tabla.getString(0, 3), 860, 565);
+    text(tabla.getString(0, 4), 862, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+  //BOYACÁ
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(300, 356, loop, loop);
+  if (overCircle(300, 356, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("BOYACÁ", 660, 190);
+    boyaca.resize(120, 134);
+    image (boyaca, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(10, 0), 870, 310);
+    text(tabla.getString(10, 1), 870, 395);
+    text(tabla.getString(10, 2), 870, 480);
+    text(tabla.getString(10, 3), 865, 565);
+    text(tabla.getString(10, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //CASANARE
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(347, 362, loop, loop);
+  if (overCircle(347, 362, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("CASANARE", 648, 190);
+    casanare.resize(105, 119);
+    image (casanare, 820, 120);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(25, 0), 870, 310);
+    text(tabla.getString(25, 1), 870, 395);
+    text(tabla.getString(25, 2), 870, 480);
+    text(tabla.getString(25, 3), 865, 565);
+    text(tabla.getString(25, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+
+  //META
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(308, 428, loop, loop);
+  if (overCircle(308, 428, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("META", 665, 190);
+    meta.resize(105, 119);
+    image (meta, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(19, 0), 870, 310);
+    text(tabla.getString(19, 1), 870, 395);
+    text(tabla.getString(19, 2), 870, 480);
+    text(tabla.getString(19, 3), 865, 565);
+    text(tabla.getString(19, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //RISARALDA
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(199, 366, loop, loop);
+  if (overCircle(199, 366, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("RISARALDA", 645, 190);
+    risaralda.resize(105, 119);
+    image (risaralda, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(7, 0), 865, 310);
+    text(tabla.getString(7, 1), 865, 395);
+    text(tabla.getString(7, 2), 865, 480);
+    text(tabla.getString(7, 3), 860, 565);
+    text(tabla.getString(7, 4), 860, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //QUINDIO
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(214, 389, loop, loop);
+  if (overCircle(214, 389, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("QUINDIO", 655, 190);
+    quindio.resize(105, 119);
+    image (quindio, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(18, 0), 870, 310);
+    text(tabla.getString(18, 1), 870, 395);
+    text(tabla.getString(18, 2), 870, 480);
+    text(tabla.getString(18, 3), 865, 565);
+    text(tabla.getString(18, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //TOLIMA
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(230, 410, loop, loop);
+  if (overCircle(230, 410, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("TOLIMA", 657, 190);
+    tolima.resize(105, 119);
+    image (tolima, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(14, 0), 870, 310);
+    text(tabla.getString(14, 1), 870, 395);
+    text(tabla.getString(14, 2), 870, 480);
+    text(tabla.getString(14, 3), 865, 565);
+    text(tabla.getString(14, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //VALLE DEL CAUCA
+  fill(255, 255, 255, 130);
+  noStroke();
+  ellipse(182, 422, loop, loop);
+  if (overCircle(182, 422, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("VALLE DEL", 650, 190);
+    text("CAUCA", 660, 210);
+    valle.resize(105, 119);
+    image (valle, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(2, 0), 865, 310);
+    text(tabla.getString(2, 1), 865, 395);
+    text(tabla.getString(2, 2), 865, 480);
+    text(tabla.getString(2, 3), 855, 565);
+    text(tabla.getString(2, 4), 862, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //CAUCA
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(167, 460, loop, loop);
+  if (overCircle(167, 460, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("CAUCA", 660, 190);
+    cauca.resize(95, 109);
+    image (cauca, 820, 125);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(11, 0), 870, 310);
+    text(tabla.getString(11, 1), 870, 395);
+    text(tabla.getString(11, 2), 870, 480);
+    text(tabla.getString(11, 3), 865, 565);
+    text(tabla.getString(11, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //HUILA
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(218, 452, loop, loop);
+  if (overCircle(218, 452, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("HUILA", 665, 190);
+    huila.resize(105, 119);
+    image (huila, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(17, 0), 870, 310);
+    text(tabla.getString(17, 1), 870, 395);
+    text(tabla.getString(17, 2), 870, 480);
+    text(tabla.getString(17, 3), 865, 565);
+    text(tabla.getString(17, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+  //NARIÑO
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(136, 494, loop, loop);
+  if (overCircle(136, 494, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("NARIÑO", 660, 190);
+    narino.resize(105, 119);
+    image (narino, 815, 120);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+
+    text(tabla.getString(13, 0), 870, 310);
+    text(tabla.getString(13, 1), 870, 395);
+    text(tabla.getString(13, 2), 870, 480);
+    text(tabla.getString(13, 3), 865, 565);
+    text(tabla.getString(13, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //PUTUMAYO
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(197, 527, loop, loop);
+  if (overCircle(197, 527, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("PUTUMAYO", 640, 190);
+    putumayo.resize(105, 119);
+    image (putumayo, 820, 125);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(27, 0), 870, 310);
+    text(tabla.getString(27, 1), 870, 395);
+    text(tabla.getString(27, 2), 870, 480);
+    text(tabla.getString(27, 3), 865, 565);
+    text(tabla.getString(27, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+  //CAQUETÁ
+  fill(0, 0, 0, 100);
+  noStroke();
+  ellipse(256, 507, loop, loop);
+  if (overCircle(256, 507, 5) ==true && mousePressed) {
+    fill(0);
+    textFont(titulodpto);
+    text("CAQUETÁ", 650, 190);
+    caqueta.resize(105, 119);
+    image (caqueta, 820, 115);
+
+    textFont(titulodpto);
+    fill(100, 100, 100);
+    text(tabla.getString(22, 0), 870, 310);
+    text(tabla.getString(22, 1), 870, 395);
+    text(tabla.getString(22, 2), 870, 480);
+    text(tabla.getString(22, 3), 865, 565);
+    text(tabla.getString(22, 4), 853, 623);
+
+    text("/", 872, 630);
+    text("33", 879, 640);
+  }
+
+
+  //
+  fill(0);
+  if (mouseY > 720 && mouseY < 735) {
+    if (mouseX < 185 && mouseX > 85) {
+      cambio=100;
+      //tint(255, 153, 204); 
+      colombia0.resize(450, 597);
+      image(colombia0, 80, 100);
+      textFont(rangos);
+      text("0", 130, 755);
+    }
+  }
+
+
+  if (mouseY > 720 && mouseY < 735) {
+    if (mouseX < 285 && mouseX > 184) {
+      cambio=100;
+      //tint(255, 153, 204); 
+      colombia50.resize(450, 597);
+      image(colombia50, 80, 100);
+      textFont(rangos);
+      text("0 - 50", 215, 755);
+    }
+  }
+
+
+  if (mouseY > 720 && mouseY < 735) {
+    if (mouseX < 385 && mouseX > 284) {
+      cambio=100;
+      //tint(255, 153, 204); 
+      colombia100.resize(450, 597);
+      image(colombia100, 80, 100);
+      textFont(rangos);
+      text("50 - 100", 310, 755);
+    }
+  }
+
+  if (mouseY > 720 && mouseY < 735) {
+    if (mouseX < 485 && mouseX > 384) {
+      cambio=100;
+      //tint(255, 153, 204); 
+      colombia500.resize(450, 597);
+      image(colombia500, 80, 100);
+      textFont(rangos);
+      text("100 - 500", 400, 755);
+    }
+  }
+
+
+  if (mouseY > 720 && mouseY < 735) {
+    if (mouseX < 585 && mouseX > 484) {
+      cambio=100;
+      //tint(255, 153, 204); 
+      colombia600.resize(450, 597);
+      image(colombia600, 80, 100);
+      textFont(rangos);
+      text("500 - 1000", 500, 755);
+    }
+  }
+
+  if (mouseY > 720 && mouseY < 735) {
+    if (mouseX < 685 && mouseX > 584) {
+      cambio=100;
+      //tint(255, 153, 204); 
+      colombia1000.resize(450, 597);
+      image(colombia1000, 80, 100);
+      textFont(rangos);
+      text("1000 - 5000", 597, 755);
+    }
+  }
+
+  if (mouseY > 720 && mouseY < 735) {
+    if (mouseX < 785 && mouseX > 684) {
+      cambio=100;
+      //tint(255, 153, 204); 
+      colombia8000.resize(450, 597);
+      image(colombia8000, 80, 100);
+      textFont(rangos);
+      text("5000 - 10000", 693, 755);
+    }
+  }
+
+
+  //
+
+  println("este es x", mouseX);
+  println("este es y ", mouseY);
+
+  //
+}
+
+// función y debe colocarse al final del programa para decir que todos los circulos son botones. recomendación de AB
+boolean overCircle(int x, int y, int diameter) {
+  float disX = x - mouseX;
+  float disY = y - mouseY;
+  if (sqrt(sq(disX) + sq(disY)) < diameter*2) {
+    return true;
+  } else {
+    return false;
+  }
+}
